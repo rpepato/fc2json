@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "fc2json"
   gem.homepage = "http://github.com/rpepato/fc2json"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Converts Esri feature services to Json}
+  gem.description = %Q{fc2json queries, downloads and formats all data from a remote Esri feature service, exposing it as json representation}
   gem.email = "rpepato@gmail.com"
-  gem.authors = ["rpepato"]
+  gem.authors = ["Roberto Pepato"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
