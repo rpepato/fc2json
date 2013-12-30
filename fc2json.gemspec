@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "fc2json.gemspec",
     "lib/fc2json.rb",
     "spec/fc2json_spec.rb",
     "spec/fixtures/vcr_cassettes/1000_batch_size.yml",
