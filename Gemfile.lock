@@ -66,7 +66,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.0)
   jeweler (~> 1.8, >= 1.8.7)
-  nokogiri (~> 1.5.10)
+  nokogiri (~> 1.5, >= 1.5.10)
   rspec (~> 2.8, >= 2.8.0)
   vcr (~> 2.8, >= 2.8.0)
   webmock (~> 1.15, < 1.16.0)

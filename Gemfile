@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-gem 'nokogiri', "~> 1.5.10"
+gem 'nokogiri', "~> 1.5", ">= 1.5.10"
 
 group :development, :test do
   gem "rspec", "~> 2.8", ">= 2.8.0"
