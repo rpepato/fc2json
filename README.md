@@ -31,10 +31,10 @@ end
 
 The construction parameters are:
 
-	* service_url: Mandatory. The url for the feature service. 
-	* object_identifier_field_name: Optional. The name of the field used as an object identifier on the feature service. If not provided, defaults to "FID"
-	* records_per_request: Optional. The number of records returned on each request to the service. Be aware that if you specify a number greater than the max number of records configured on the service, an ArgumentError will be raised. If not provided, defaults to 2000.
-	* where_clause: Optional. The where condition (SQL query) to filter the records on the feature service. If not provided, defaults to "1 = 1"
+* __service_url:__ Mandatory. The url for the feature service. 
+* __object_identifier_field_name:__ Optional. The name of the field used as an object identifier on the feature service. If not provided, defaults to "FID"
+* __records_per_request:__ Optional. The number of records returned on each request to the service. Be aware that if you specify a number greater than the max number of records configured on the service, an ArgumentError will be raised. If not provided, defaults to 2000.
+* __where_clause:__ Optional. The where condition (SQL query) to filter the records on the feature service. If not provided, defaults to "1 = 1"
 
 ###Contributing to fc2json
  
