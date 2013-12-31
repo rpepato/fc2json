@@ -2,7 +2,7 @@ language: ruby
 before_install:
   - gem update --system
   - gem --version
-  - gem install json
+  - gem install json -v '1.8.1'
 rvm: 
   - 1.9.3
   - 2.0.0
