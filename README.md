@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/rpepato/fc2json.png?branch=master)](https://travis-ci.org/rpepato/fc2json) [![Code Climate](https://codeclimate.com/github/rpepato/fc2json.png)](https://codeclimate.com/github/rpepato/fc2json)
 fc2json
 ==================
 
