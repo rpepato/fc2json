@@ -13,7 +13,7 @@ class FC2Json
 	def initialize (service_url, object_identifier_field_name = nil, records_per_request = nil, where_clause = nil)
 		@service_url = service_url
 		@object_identifier_field_name = object_identifier_field_name || "FID"
-		@records_per_request = records_per_request || 2000
+		@records_per_request = (records_per_request || 2000).to_i
 		@where_clause = where_clause || "1 = 1"
 	end
 
