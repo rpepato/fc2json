@@ -18,21 +18,18 @@ class FC2Json
 	end
 
 	def get
-		ids = get_ids
+		ids = object_identifiers
 		json = {}
 		request_index = 0
 		continue = true
 
 		while continue do
-			if ids[request_index * @records_per_request + (@records_per_request - 1)].nil?
-				continue = false
-				where = "#{@object_identifier_field_name} >= #{ids[request_index * @records_per_request]} AND #{@object_identifier_field_name} <= #{ids.last}"
-			else
-				where = "#{@object_identifier_field_name} >= #{ids[request_index * @records_per_request]} AND #{@object_identifier_field_name} <= #{ids[request_index * @records_per_request + (@records_per_request - 1)]}"
-			end
-			request_url = "#{@service_url}/query?where=#{CGI.escape(where)}&f=pjson&outFields=*"
 
-			request_result = JSON.parse(Nokogiri::HTML(open(request_url)))
+			continue = false if ids[request_index * @records_per_request + (@records_per_request - 1)].nil?
+
+			where = where_clause_for(ids, request_index)
+
+			request_result = request_features(where)
 			if request_result["exceededTransferLimit"]
 				raise ArgumentError, "The batch size of #{@records_per_request} exceeds the capability provided by the service used on this query. Review the service's batch size limit and adjust your query parameters."
 			end
@@ -52,13 +49,25 @@ class FC2Json
 		if json["error"]
 			return {} if json["error"]["details"] == ["'where' parameter is invalid"]
 		end
-
 		json
+
 	end
 
 	private 
 
-	def get_ids
+	def request_features(where_clause)
+		JSON.parse(Nokogiri::HTML(open("#{@service_url}/query?where=#{CGI.escape(where_clause)}&f=pjson&outFields=*")))
+	end
+
+	def where_clause_for(dataset, index)
+		if dataset[index * @records_per_request + (@records_per_request - 1)].nil?
+			"#{@object_identifier_field_name} >= #{dataset[index * @records_per_request]} AND #{@object_identifier_field_name} <= #{dataset.last}"
+		else
+			"#{@object_identifier_field_name} >= #{dataset[index * @records_per_request]} AND #{@object_identifier_field_name} <= #{dataset[index * @records_per_request + (@records_per_request - 1)]}"
+		end
+	end 
+
+	def object_identifiers
 		request_url = "#{self.service_url}/query?where=#{CGI.escape(self.where_clause)}&f=pjson&returnIdsOnly=true"
 		(JSON.parse Nokogiri::HTML(open(request_url)))["objectIds"]
 	end
